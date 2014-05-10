@@ -18,7 +18,7 @@ class build_static_assets(Command):
     def run(self):
         sys.path.insert(0, self.build_dir)
         from myapp import run
-        status = run(*'assets --parse-templates build --production --no-cache'.split())
+        status = run(*'assets --parse-templates build --production'.split())
         sys.path.remove(self.build_dir)
         if status:
             sys.exit(status)
@@ -42,7 +42,7 @@ install.sub_commands.append(('install_static_assets', None))
 
 
 setup(
-    name="test project",
+    name="MyApp",
     version=0.1,
     author="Paul Egan",
     author_email="paulegan@mail.com",
@@ -51,8 +51,11 @@ setup(
     zip_safe=False,
     packages=find_packages(),
     package_data={
-        '': ['templates/*.html', 'static/*.js']
+        '': ['*.cfg', 'templates/*.html', 'static/*.js']
     },
+    data_files=[
+        ('/etc/myapp', ['myapp/prod.cfg']),
+    ],
     entry_points={
         'console_scripts': ['myapp-manage = myapp:run']
     },

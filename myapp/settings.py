@@ -1,0 +1,3 @@
+DEBUG = True
+ASSETS_MANIFEST = 'file'
+ASSETS_CACHE = False

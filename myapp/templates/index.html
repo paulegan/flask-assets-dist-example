@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+  </head>
+  <body>
+    <h1>test</h1>
+    {% assets filters="rjsmin", output="gen/home.%(version)s.js", "input.js" %}
+    <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+  </body>
+</html>
+
